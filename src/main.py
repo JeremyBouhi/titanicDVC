@@ -10,11 +10,7 @@ def isFemaleOrNot(str) :
     else:
         return 0
 
-df = df.drop['Name', 'Ticket', 'Cabin', 'Embarked']
-
 df['Preds']= df.apply(lambda x: isFemaleOrNot(x['Sex']), axis=1)
-
-#print(df[['Preds', 'Sex']])
 
 # Evaluate accuracy
 auc = accuracy_score(df['Survived'], df['Preds'])
