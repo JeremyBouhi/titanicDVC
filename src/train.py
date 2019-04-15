@@ -1,4 +1,4 @@
-from sklearn.linear_model import LinearRegression
+from sklearn.tree import DecisionTreeRegressor
 import conf
 import pickle
 
@@ -13,10 +13,10 @@ with open(train_matrix, 'rb') as fd:
 with open(labels, 'rb') as fd:
     y = pickle.load(fd)
 
-linreg = LinearRegression()
-linreg.fit(X, y)
+treereg = DecisionTreeRegressor()
+treereg.fit(X, y)
 
-print(linreg)
+print(treereg)
 
 with open(output, 'wb') as fd:
-    pickle.dump(linreg, fd)
+    pickle.dump(treereg, fd)
