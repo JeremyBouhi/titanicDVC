@@ -62,3 +62,10 @@ To properly delete main.dvc you need to :
 
 (-p option for purge)
 
+###Experiment
+When you change of branch, you need to get the right data folders. 
+
+    git checkout using-linear-regression
+    dvc checkout
+    
+Git tracks the 'evaluate.dvc' file, which has the 'model.p' file as a dependence. So you need to retrieve this file which is really easy using DVC
