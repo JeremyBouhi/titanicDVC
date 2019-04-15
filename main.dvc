@@ -1,0 +1,8 @@
+cmd: python src/main.py
+deps:
+- md5: b916dc32221c563f3052b0a8156c9566
+  path: src/main.py
+- md5: 61fdd54abdbf6a85b778e937122e1194
+  path: data/train.csv
+md5: 02fd5f9795baf57bbc59f9cbabe717cb
+wdir: .

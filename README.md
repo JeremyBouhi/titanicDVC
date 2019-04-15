@@ -23,4 +23,14 @@ ls -R /tmp/dvc-storage
 dvc pull
 
 ###Connect code and data
-dvc run...
+dvc run -f main.dvc -d src/main.py -d data/train.csv -m auc.metric python src/main.py
+
+Running command:
+        python src/main.py
+
+Saving information to 'main.dvc'.
+
+To track the changes with git run:
+
+        git add main.dvc
+
