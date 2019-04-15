@@ -68,5 +68,5 @@ We don't need to do :
     dvc add prepare.dvc
 because when you do 'dvc run', it automatically saves it in the cache and takes the file under DVC control
 
-    dvc run -d src/prepare.py -d data/matrix-train.p -o data/model.p -f train.dvc python src/train.py
+    dvc run -d src/train.py -d data/matrix-train.p -o data/model.p -f train.dvc python src/train.py
     dvc run -f evaluate.dvc -d src/evaluate.py -d data/model.p -m data/eval.txt python src/evaluate.py 
