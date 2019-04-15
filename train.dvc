@@ -1,0 +1,14 @@
+cmd: python src/train.py
+deps:
+- md5: 36829ffd4581355d2920c7b12d2b65c2
+  path: src/prepare.py
+- md5: c919c5348a1532d6ed394ec5c7bf05ef
+  path: data/matrix-train.p
+md5: bfe8aec92392ae8612ac55a8496f7e2a
+outs:
+- cache: true
+  md5: 4b4f13c601a4957b93a9b30148414e46
+  metric: false
+  path: data/model.p
+  persist: false
+wdir: .

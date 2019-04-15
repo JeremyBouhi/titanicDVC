@@ -1,0 +1,8 @@
+cmd: python src/prepare.py
+deps:
+- md5: 299712d4c201b8425afb30b3d729bd19
+  path: src/prepare.py
+- md5: 61fdd54abdbf6a85b778e937122e1194
+  path: data/train.csv
+md5: 9bc4c1c23a33ff169d3351c0c2c99f3c
+wdir: .

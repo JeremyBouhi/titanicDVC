@@ -1,8 +1,10 @@
-import pandas as pd
 import pickle
-import conf
+
+import pandas as pd
 from sklearn.preprocessing import Imputer
 from sklearn.preprocessing import StandardScaler
+
+import conf
 
 x = conf.train_matrix
 Y = conf.labels
