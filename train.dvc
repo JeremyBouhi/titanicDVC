@@ -1,15 +1,15 @@
 cmd: python src/train.py
 deps:
-- md5: 40e592f50ab58e183961b361eb3c970b
+- md5: 4bbca7df04f7ccd3a0650cc2b2213935
   path: src/train.py
 - md5: 88c4125dbf33ce6b9eb359fef336fac0
   path: data/X_train.p
 - md5: 30390a1957e5385a5bcb774230ba68b5
   path: data/y_train.p
-md5: d2a3b9ed3410cc081cae794dbde64ae3
+md5: 8083fc242926248f60664985a9d25de5
 outs:
 - cache: true
-  md5: e05de6385a5d2cec948c3432e71c6abd
+  md5: b8c34837e373770c4224ab7ed3cd89f5
   metric: false
   path: data/model.p
   persist: false

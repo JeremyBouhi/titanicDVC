@@ -1,4 +1,4 @@
-from sklearn.ensemble import RandomForestRegressor
+from sklearn.linear_model import LinearRegression
 import conf
 import pickle
 
@@ -10,10 +10,10 @@ with open(conf.X_train, 'rb') as fd:
 with open(conf.y_train, 'rb') as fd:
     y_train = pickle.load(fd)
 
-forest = RandomForestRegressor(max_depth=2, random_state=0, n_estimators=100)
-forest.fit(X_train, y_train)
+reg = LinearRegression()
+reg.fit(X_train, y_train)
 
-print(forest)
+print(reg)
 
 with open(output, 'wb') as fd:
-    pickle.dump(forest, fd)
+    pickle.dump(reg, fd)
