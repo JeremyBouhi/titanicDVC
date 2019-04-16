@@ -1,4 +1,4 @@
-from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import RandomForestClassifier
 import conf
 import pickle
 
@@ -13,10 +13,10 @@ with open(train_matrix, 'rb') as fd:
 with open(labels, 'rb') as fd:
     y = pickle.load(fd)
 
-forest = RandomForestRegressor()
-forest.fit(X, y)
+rf = RandomForestClassifier(n_estimators=100, random_state=0, max_features=2)
+rf.fit(X, y)
 
-print(forest)
+print(rf)
 
 with open(output, 'wb') as fd:
-    pickle.dump(forest, fd)
+    pickle.dump(rf, fd)
