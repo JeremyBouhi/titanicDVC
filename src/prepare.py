@@ -6,19 +6,15 @@ from sklearn.preprocessing import StandardScaler
 
 import conf
 
-x = conf.train_matrix
-Y = conf.labels
-
 df = pd.read_csv("data/train.csv")
-labels = df['Survived']
 
-df_without_columns = df.drop(["Name", "Ticket", "Cabin", "Embarked", "PassengerId", "Survived"], axis=1)
-data_binarized = pd.get_dummies(df_without_columns, columns=["Sex"])
+df_without_columns = df.drop(["Name", "Ticket", "Cabin", "Embarked", "PassengerId"], axis=1)
+df_binarized = pd.get_dummies(df_without_columns, columns=["Sex"])
 
+#For Age
 imputer = Imputer(strategy="median")
-X = imputer.fit_transform(data_binarized)
-#reinject in pandas.Dataframe:
-df = pd.DataFrame(X, columns=data_binarized.columns)
+X = imputer.fit_transform(df_binarized)
+df = pd.DataFrame(X, columns=df_binarized.columns)
 
 std = StandardScaler()
 X = std.fit_transform(df)
@@ -26,8 +22,5 @@ df = pd.DataFrame(X, columns=df.columns)
 
 print(df)
 
-with open(x, 'wb') as fd:
+with open(conf.df, 'wb') as fd:
     pickle.dump(df, fd)
-
-with open(Y, 'wb') as fd:
-    pickle.dump(labels, fd)

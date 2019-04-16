@@ -69,4 +69,14 @@ We don't need to do :
 because when you do 'dvc run', it automatically saves it in the cache and takes the file under DVC control
 
     dvc run -d src/train.py -d data/matrix-train.p -o data/model.p -f train.dvc python src/train.py
-    dvc run -f evaluate.dvc -d src/evaluate.py -d data/model.p -m data/eval.txt python src/evaluate.py 
+    dvc run -f evaluate.dvc -d src/evaluate.py -d data/model.p -m data/eval.txt python src/evaluate.py
+    
+###Adding a new step in the pipeline (split_train_test.py)
+    dvc remove prepare.dvc
+The command just above delete all output files (matrix-train.p and labels.p in this case).
+
+    dvc run -f prepare.dvc -d src/prepare.py -d data/train.csv -o data/preprocessed_df.p python src/prepare.py
+    dvc run -f split_train_test.dvc -d src/split_train_test.py -d data/preprocessed_df.p -o data/X_test.p -o data/X_train.p -o dta/y_train.p -o data/y_test.p python src/split_train_test.py
+    dvc run -f train.dvc -d src/train.py -d data/X_train.p -d data/y_train.p -o data/model.p python src/train.py
+evaluate.dvc doesn't change
+    

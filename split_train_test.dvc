@@ -1,0 +1,29 @@
+cmd: python src/split_train_test.py
+deps:
+- md5: 9c8939ffe20dc208e0967d4c48a70fdb
+  path: src/split_train_test.py
+- md5: 264cc9ae32c9d174227310206dcf4713
+  path: data/preprocessed_df.p
+md5: a809236d993ecfc2020bc2eb447e0c05
+outs:
+- cache: true
+  md5: e94bd9b0781a2fb53b7a80625bf0d57b
+  metric: false
+  path: data/X_test.p
+  persist: false
+- cache: true
+  md5: 88c4125dbf33ce6b9eb359fef336fac0
+  metric: false
+  path: data/X_train.p
+  persist: false
+- cache: true
+  md5: 30390a1957e5385a5bcb774230ba68b5
+  metric: false
+  path: data/y_train.p
+  persist: false
+- cache: true
+  md5: 105a5f5fc1cb796e23605d7d038797ca
+  metric: false
+  path: data/y_test.p
+  persist: false
+wdir: .
