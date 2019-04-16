@@ -1,4 +1,4 @@
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.tree import DecisionTreeClassifier
 import conf
 import pickle
 
@@ -13,7 +13,7 @@ with open(train_matrix, 'rb') as fd:
 with open(labels, 'rb') as fd:
     y = pickle.load(fd)
 
-rf = RandomForestClassifier(n_estimators=100, random_state=0, max_features=2)
+rf = DecisionTreeClassifier(random_state=0, max_features=2)
 rf.fit(X, y)
 
 print(rf)
