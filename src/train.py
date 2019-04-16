@@ -1,4 +1,4 @@
-from sklearn.tree import DecisionTreeRegressor
+from sklearn.ensemble import RandomForestRegressor
 import conf
 import pickle
 
@@ -13,10 +13,10 @@ with open(train_matrix, 'rb') as fd:
 with open(labels, 'rb') as fd:
     y = pickle.load(fd)
 
-treereg = DecisionTreeRegressor()
-treereg.fit(X, y)
+forest = RandomForestRegressor()
+forest.fit(X, y)
 
-print(treereg)
+print(forest)
 
 with open(output, 'wb') as fd:
-    pickle.dump(treereg, fd)
+    pickle.dump(forest, fd)
