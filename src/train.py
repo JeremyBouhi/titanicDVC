@@ -10,7 +10,7 @@ with open(conf.X_train, 'rb') as fd:
 with open(conf.y_train, 'rb') as fd:
     y_train = pickle.load(fd)
 
-forest = RandomForestRegressor()
+forest = RandomForestRegressor(max_depth=2, random_state=0, n_estimators=100)
 forest.fit(X_train, y_train)
 
 print(forest)
