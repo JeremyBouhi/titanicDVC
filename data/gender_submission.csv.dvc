@@ -1,0 +1,8 @@
+md5: 7b46f628670746ec3b02ae5ee0806b33
+outs:
+- cache: true
+  md5: b56943b6ee3d9af0913ee5dd83b3d729
+  metric: false
+  path: data/gender_submission.csv
+  persist: false
+wdir: ..

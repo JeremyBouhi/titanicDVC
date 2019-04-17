@@ -1,4 +1,6 @@
 venv
-/data
+/data/*.csv
+/data/.gitignore
+/data/eval.txt
 .idea/
 __pycache__
