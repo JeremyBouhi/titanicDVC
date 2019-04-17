@@ -4,3 +4,4 @@ venv
 /data/eval.txt
 .idea/
 __pycache__
+/files
