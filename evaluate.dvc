@@ -1,0 +1,14 @@
+cmd: python src/evaluate.py
+deps:
+- md5: 59be3a5134740e087c072f053172eb92
+  path: src/evaluate.py
+- md5: b8c34837e373770c4224ab7ed3cd89f5
+  path: data/model.p
+md5: 368cb1a24eea26415c247135b8f66f24
+outs:
+- cache: true
+  md5: 9add2c1b5ea941e602913d74eca764f8
+  metric: true
+  path: data/eval.txt
+  persist: false
+wdir: .

@@ -24,9 +24,8 @@
 
 ###Connect code and data
 We describe each step of the pipeline
--f : the file name where the step will be described
+-f : the file name where the step will be described (if -f not specified the file will be named after the output file, i.e 'model.p.dvc', if there is no -o option, it will be called Dvcfile)
 -d : for the dependencies 
-<cmd> : what to do
 
     dvc run -f main.dvc -d src/main.py -d data/train.csv python src/main.py
 
@@ -62,3 +61,22 @@ To properly delete main.dvc you need to :
 
 (-p option for purge)
 
+###Create pipeline
+    dvc run -f prepare.dvc -d src/prepare.py -d data/train.csv python src/prepare.py
+We don't need to do :
+    
+    dvc add prepare.dvc
+because when you do 'dvc run', it automatically saves it in the cache and takes the file under DVC control
+
+    dvc run -d src/train.py -d data/matrix-train.p -o data/model.p -f train.dvc python src/train.py
+    dvc run -f evaluate.dvc -d src/evaluate.py -d data/model.p -m data/eval.txt python src/evaluate.py
+    
+###Adding a new step in the pipeline (split_train_test.py)
+    dvc remove prepare.dvc
+The command just above delete all output files (matrix-train.p and labels.p in this case).
+
+    dvc run -f prepare.dvc -d src/prepare.py -d data/train.csv -o data/preprocessed_df.p python src/prepare.py
+    dvc run -f split_train_test.dvc -d src/split_train_test.py -d data/preprocessed_df.p -o data/X_test.p -o data/X_train.p -o dta/y_train.p -o data/y_test.p python src/split_train_test.py
+    dvc run -f train.dvc -d src/train.py -d data/X_train.p -d data/y_train.p -o data/model.p python src/train.py
+evaluate.dvc doesn't change
+    

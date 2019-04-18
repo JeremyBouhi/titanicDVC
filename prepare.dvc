@@ -1,0 +1,14 @@
+cmd: python src/prepare.py
+deps:
+- md5: ab4ef7159768d04ad58d772e42cba93f
+  path: src/prepare.py
+- md5: 61fdd54abdbf6a85b778e937122e1194
+  path: data/train.csv
+md5: 70e1766dacc7cf7491cd6fe226e2d1ee
+outs:
+- cache: true
+  md5: 264cc9ae32c9d174227310206dcf4713
+  metric: false
+  path: data/preprocessed_df.p
+  persist: false
+wdir: .
