@@ -6,21 +6,30 @@ from sklearn.preprocessing import StandardScaler
 
 import conf
 
-df = pd.read_csv("data/train.csv")
+#%%
+df_train = pd.read_csv("data/train.csv")
+df_test = pd.read_csv("data/test.csv")
 
-df_without_columns = df.drop(["Name", "Ticket", "Cabin", "Embarked", "PassengerId"], axis=1)
-df_binarized = pd.get_dummies(df_without_columns, columns=["Sex"])
+#%%
+print(df_train)
+#%%
+print(df_train.isnull().sum())
+#%% Filling the NaN values
+df_train['Embarked'].fillna(df_train['Embarked'].mode()[0], inplace = True)
+df_train['Fare'].fillna(df_train['Fare'].median(), inplace = True)
+df_train['Age'].fillna(df_train['Age'].median(), inplace = True)
 
-#For Age
-imputer = Imputer(strategy="median")
-X = imputer.fit_transform(df_binarized)
-df = pd.DataFrame(X, columns=df_binarized.columns)
+print('check the nan value in train data')
+print(df_train.isnull().sum())
+#%%
+print(df_train.columns)
 
-std = StandardScaler()
-X = std.fit_transform(df)
-df = pd.DataFrame(X, columns=df.columns)
+#%%
 
-print(df)
-
-with open(conf.df, 'wb') as fd:
-    pickle.dump(df, fd)
+drop_column = ['Fare','Name','Ticket', 'PassengerId','Parch', 'Cabin']
+df_train.drop(drop_column, axis=1, inplace = True)
+#%%
+df_train = pd.get_dummies(df_train, columns = ["Age","Sex","Embarked","Pclass", "SibSp"])
+#%%
+with open(conf.df_train, 'wb') as fd:
+    pickle.dump(df_train, fd)

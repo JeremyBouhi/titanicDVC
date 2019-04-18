@@ -12,8 +12,12 @@ with open(conf.y_test, 'rb') as fd:
     y_test = pickle.load(fd)
 
 #%%
-auc = model.score(X_test, y_test)
-
+#auc = model.score(X_test, y_test)
+y_preds = model.predict(X_test)
+#%%
+print(y_preds.round())
+#%%
+auc = round(accuracy_score(y_preds.round(),y_test)*100,2)
 #%%
 print(auc)
 

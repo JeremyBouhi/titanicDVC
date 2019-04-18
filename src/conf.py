@@ -2,7 +2,7 @@ import os
 
 data_dir = 'data'
 
-df = os.path.join(data_dir, 'preprocessed_df.p')
+df_train = os.path.join(data_dir, 'preprocessed_df.p')
 X_train = os.path.join(data_dir, 'X_train.p')
 X_test = os.path.join(data_dir, 'X_test.p')
 y_train = os.path.join(data_dir, 'y_train.p')

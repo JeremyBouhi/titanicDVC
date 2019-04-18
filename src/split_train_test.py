@@ -2,7 +2,7 @@ from sklearn.model_selection import train_test_split
 import conf
 import pickle
 
-with open(conf.df, 'rb') as fd:
+with open(conf.df_train, 'rb') as fd:
     df = pickle.load(fd)
 
 
