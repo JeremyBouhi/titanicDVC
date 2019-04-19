@@ -1,4 +1,4 @@
-from sklearn.tree import DecisionTreeRegressor
+from sklearn.ensemble import AdaBoostRegressor
 import conf
 import pickle
 
@@ -10,7 +10,7 @@ with open(conf.X_train, 'rb') as fd:
 with open(conf.y_train, 'rb') as fd:
     y_train = pickle.load(fd)
 
-reg = DecisionTreeRegressor()
+reg = AdaBoostRegressor()
 reg.fit(X_train, y_train)
 
 print(reg)

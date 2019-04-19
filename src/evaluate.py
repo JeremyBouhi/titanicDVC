@@ -12,6 +12,8 @@ with open(conf.y_test, 'rb') as fd:
     y_test = pickle.load(fd)
 
 #%%
+y_test.shape
+#%%
 #auc = model.score(X_test, y_test)
 y_preds = model.predict(X_test)
 #%%
