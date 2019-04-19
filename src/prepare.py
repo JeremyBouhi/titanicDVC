@@ -25,11 +25,22 @@ print(df_train.isnull().sum())
 print(df_train.columns)
 
 #%%
+def process_age(df,cut_points,label_names):
+    df["Age"] = df["Age"].fillna(-0.5)
+    df["Age_categories"] = pd.cut(df["Age"],cut_points,labels=label_names)
+    return df
+
+cut_points = [-1,0,18,100]
+label_names = ["Missing","Child","Adult"]
+
+df_train = process_age(df_train,cut_points,label_names)
+#%%
 
 drop_column = ['Fare','Name','Ticket', 'PassengerId','Parch', 'Cabin']
 df_train.drop(drop_column, axis=1, inplace = True)
+
 #%%
-df_train = pd.get_dummies(df_train, columns = ["Age","Sex","Embarked","Pclass", "SibSp"])
+df_train = pd.get_dummies(df_train, columns = ["Age_categories","Sex","Embarked","Pclass", "SibSp"])
 #%%
 with open(conf.df_train, 'wb') as fd:
     pickle.dump(df_train, fd)
