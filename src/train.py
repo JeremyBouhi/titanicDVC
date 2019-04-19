@@ -1,4 +1,4 @@
-from sklearn.ensemble import AdaBoostRegressor
+from sklearn.ensemble import GradientBoostingRegressor
 import conf
 import pickle
 
@@ -10,7 +10,7 @@ with open(conf.X_train, 'rb') as fd:
 with open(conf.y_train, 'rb') as fd:
     y_train = pickle.load(fd)
 
-reg = AdaBoostRegressor()
+reg = GradientBoostingRegressor()
 reg.fit(X_train, y_train)
 
 print(reg)
