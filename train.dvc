@@ -6,10 +6,10 @@ deps:
   path: data/X_train.p
 - md5: ad40268f7388e3e89c1b6ae8418242bb
   path: data/y_train.p
-md5: 683b6597f2b501b11683a5b7d28953c8
+md5: 83d26095036e1d7daa2bbd5a72510950
 outs:
 - cache: true
-  md5: ab5d6e40bd05efce792e01ebec58661e
+  md5: 907cc73bc4733a8e68c52582414d4088
   metric: false
   path: data/model.p
   persist: false
