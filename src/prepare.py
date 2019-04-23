@@ -4,8 +4,7 @@ import conf
 import numpy as np
 
 
-# %%
-
+#%%
 def grab_data():
     df = pd.read_csv("data/train.csv")
     return df
@@ -28,17 +27,20 @@ def preprocess_data(df):
     df['Embarked'].fillna(df['Embarked'].mode()[0], inplace=True)
     df = clean_age(df)
     df = clean_family_size(df)
-    print((df['FamilySize']==2).sum())
+    df['Sex'] = df['Sex'].map({'male': 0, 'female': 1})
+    df['Embarked'] = df['Embarked'].map({'C': 0, 'Q': 1, 'S': 2})
+
     drop_column = ['Fare', 'Name', 'Ticket', 'PassengerId', 'Parch', 'Cabin', 'SibSp', 'Parch', 'Age']
     df.drop(drop_column, axis=1, inplace=True)
 
-    df = pd.get_dummies(df, columns=["AgeGroup", "Sex", "Embarked", "Pclass", "FamilySize"])
+    df = pd.get_dummies(df, columns=["AgeGroup", "FamilySize"])
     return df
 
-# %%
+#%%
 df_train = grab_data()
 df_train = preprocess_data(df_train)
 print((df_train.sum()))
+
 #%%
 with open(conf.df_train, 'wb') as fd:
     pickle.dump(df_train, fd)
