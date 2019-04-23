@@ -1,35 +1,44 @@
 import pickle
-
 import pandas as pd
-from sklearn.preprocessing import Imputer
-from sklearn.preprocessing import StandardScaler
-
 import conf
+import numpy as np
 
-#%%
-df_train = pd.read_csv("data/train.csv")
-df_test = pd.read_csv("data/test.csv")
 
-#%%
-print(df_train)
-#%%
-print(df_train.isnull().sum())
-#%% Filling the NaN values
-df_train['Embarked'].fillna(df_train['Embarked'].mode()[0], inplace = True)
-df_train['Fare'].fillna(df_train['Fare'].median(), inplace = True)
-df_train['Age'].fillna(df_train['Age'].median(), inplace = True)
+# %%
 
-print('check the nan value in train data')
-print(df_train.isnull().sum())
-#%%
-print(df_train.columns)
+def grab_data():
+    df = pd.read_csv("data/train.csv")
+    return df
 
-#%%
+def clean_age(df):
+    df['Age'].fillna(df['Age'].median(), inplace=True)
+    bins = [0, 14, 25, 35, 60, np.inf]
+    labels = ['Child', 'Teenager', 'Young Adult', 'Adult', 'Senior']
+    df['AgeGroup'] = pd.cut(df["Age"], bins, labels=labels)
+    return df
 
-drop_column = ['Fare','Name','Ticket', 'PassengerId','Parch', 'Cabin']
-df_train.drop(drop_column, axis=1, inplace = True)
-#%%
-df_train = pd.get_dummies(df_train, columns = ["Age","Sex","Embarked","Pclass", "SibSp"])
+def clean_family_size(df):
+    df['FamilySize'] = df['SibSp'] + df['Parch'] + 1
+    bins = [0, 1, 2, 3, 4, np.inf]
+    labels = ['0', '1', '2', '3', '>=4']
+    df['FamilySize'] = pd.cut(df["FamilySize"], bins, labels=labels)
+    return df
+
+def preprocess_data(df):
+    df['Embarked'].fillna(df['Embarked'].mode()[0], inplace=True)
+    df = clean_age(df)
+    df = clean_family_size(df)
+    print((df['FamilySize']==2).sum())
+    drop_column = ['Fare', 'Name', 'Ticket', 'PassengerId', 'Parch', 'Cabin', 'SibSp', 'Parch', 'Age']
+    df.drop(drop_column, axis=1, inplace=True)
+
+    df = pd.get_dummies(df, columns=["AgeGroup", "Sex", "Embarked", "Pclass", "FamilySize"])
+    return df
+
+# %%
+df_train = grab_data()
+df_train = preprocess_data(df_train)
+print((df_train.sum()))
 #%%
 with open(conf.df_train, 'wb') as fd:
     pickle.dump(df_train, fd)

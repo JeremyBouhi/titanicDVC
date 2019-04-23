@@ -2,17 +2,17 @@ cmd: python src/split_train_test.py
 deps:
 - md5: 9e57c863652ddf2cf28aa9280ee83a03
   path: src/split_train_test.py
-- md5: 65005c7dcca6c8c1e243798e781f414d
+- md5: 95417ae602bfabeed4037df2c98b92a1
   path: data/preprocessed_df.p
-md5: 6fcadfb66d4efefabeeae3a2c9c233a9
+md5: 32d01f222f603b0455c5f94953ba8556
 outs:
 - cache: true
-  md5: 60d3dbaae02a236af02b4c6f107b9355
+  md5: 19685d9e6e1ea3a79b6aadb8c35947bd
   metric: false
   path: data/X_test.p
   persist: false
 - cache: true
-  md5: 0677323ca36d5d4f0fd083fe5a064bea
+  md5: 65c3c2e5b6ef7925ab097f943adaee2f
   metric: false
   path: data/X_train.p
   persist: false
