@@ -1,6 +1,7 @@
 import pickle
 import pandas as pd
-from src.conf import df_train
+from conf import df_train
+#from src.conf import df_train
 import numpy as np
 
 
@@ -39,7 +40,7 @@ def preprocess_data(df):
 #%%
 data_train = grab_data()
 data_train = preprocess_data(data_train)
-print((data_train.sum()))
+print(data_train.sum())
 
 #%%
 with open(df_train, 'wb') as fd:
