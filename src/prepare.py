@@ -1,7 +1,7 @@
 import pickle
 import pandas as pd
-from conf import df_train
-#from src.conf import df_train
+try: from conf import df_train
+except: from src.conf import df_train
 import numpy as np
 
 
