@@ -1,15 +1,15 @@
 cmd: python src/evaluate.py
 deps:
-- md5: b7d8ec6f738c43b876b117890603df67
+- md5: 4ccfd21b6da67ff53d303f34f9baa2f8
   path: data/model.p
-- md5: d6bf92ed706ba9b8baebee9ebcb714d1
+- md5: 780c065d125a8700f84c9420e75c31d7
   path: data/X_test.p
-- md5: e63dd53b65038d8fb9fbfe5e45475c9c
+- md5: 69e8e92bd15a5a35a60ba611a9ea53dc
   path: data/y_test.p
-md5: 44bd4210726e9513ab5127c597eaa750
+md5: 4376c9575177dc8f0b3ce272709ba26e
 outs:
 - cache: true
-  md5: eb346cb2945fe1560e8b7d41c07b46d8
+  md5: 03c2f6678df6c45bdde6e95d65e2c793
   metric: true
   path: data/eval.txt
   persist: false
